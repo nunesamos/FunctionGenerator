@@ -16,7 +16,7 @@ int range=1;
 int main(void) {
     WDTCTL = WDTPW | WDTHOLD;   // Stop watchdog timer
 
-    // -------------------------------- P W M ------------------------------------------
+// -------------------------------- P W M ------------------------------------------
 
         P2DIR |= pwm_out;           // Atribui a direcao de saida do pwm do pino 2.0
         P2SEL |= pwm_out;           // Seleciona a funcao especifica do pino
