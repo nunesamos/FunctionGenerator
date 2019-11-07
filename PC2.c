@@ -53,7 +53,8 @@ int main(void)
 }
 
 
-{
+#pragma vector=ADC12_VECTOR
+    __interrupt void OndaQuadrada (void){
         switch (__even_in_range(ADC12IV,8)) // Caracteriza prioridades de interrupcoes.
         {
            case 0x06:
