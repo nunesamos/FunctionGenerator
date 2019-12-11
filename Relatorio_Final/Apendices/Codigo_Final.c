@@ -349,9 +349,9 @@ __interrupt void TMR1()
     case 4:  break;
     case 6:  break;
     case 8:  break;
-    case 10: break;                           // Vector 10:  ADC12IFG2
-    case 12: break;                           // Vector 12:  ADC12IFG3
-    case 14: break;                           // Vector 14:  ADC12IFG4
+    case 10: break;                          
+    case 12: break;                           
+    case 14: break;                           
     default: break;
 
     }
