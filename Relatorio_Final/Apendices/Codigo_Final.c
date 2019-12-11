@@ -121,14 +121,7 @@ int main(void)
 
     UCSCTL2 = FLLD_1 + 374;                   
 
-
     __bic_SR_register(SCG0);                  
-
-
-
-
-
-
 
     __delay_cycles(375000);//
 
@@ -139,9 +132,7 @@ int main(void)
 
     UCSCTL7 &= ~(XT2OFFG + XT1LFOFFG + DCOFFG);
 
-                                   // Clear XT2,XT1,DCO fault flags
-
-    SFRIFG1 &= ~OFIFG;                      // Clear fault flags
+    SFRIFG1 &= ~OFIFG;                     
 
     }while (SFRIFG1&OFIFG);
 
@@ -245,8 +236,6 @@ int main(void)
 
                     break;
 
-
-
             case  8:
 
                     frec = 700 - 2*ADC12MEM1;
@@ -277,15 +266,9 @@ int main(void)
         
     }
 
-
-
-
-
 #pragma vector=PORT2_VECTOR
     __interrupt void P2_Function()
     {
-
-
 
         __delay_cycles(10000);
         
@@ -307,16 +290,11 @@ int main(void)
 
         P2IFG&=~BIT1; // Reset Port2 interrupt flag
 
-
     }
-
-
 
 #pragma vector=TIMER0_A0_VECTOR
 __interrupt void Timer_A0 (void)
 {
-
-
     
     if      (Forma_Onda==1) Output = sin[indice]*amp/255;
     else if (Forma_Onda==2) Output = tri[indice]*amp/255;
@@ -333,12 +311,9 @@ __interrupt void Timer_A0 (void)
 
 }
 
-
 #pragma vector=TIMER1_A0_VECTOR
 __interrupt void Timer_A1 (void)
 {
-
-
 
     range++;
 
@@ -364,8 +339,6 @@ __interrupt void TMR1()
     case  0: break;
 
     case  2:
-
-
 
         P6OUT = (digits[Forma_Onda]&(0x0B))*(0x08);
         P8OUT = (digits[Forma_Onda]&(BIT2));
@@ -406,8 +379,6 @@ void Send_Nibble(volatile unsigned char nibble, volatile unsigned char dados, vo
 
 }
 
-
-
 void Send_Byte(volatile unsigned char byte, volatile unsigned char dados, volatile unsigned int microsegs)
 {
 
@@ -415,8 +386,6 @@ void Send_Byte(volatile unsigned char byte, volatile unsigned char dados, volati
     Send_Nibble(byte & 0xF, dados, microsegs/2);
 
 }
-
-
 
 void Send_Data(volatile unsigned char byte)
 {
@@ -434,7 +403,6 @@ void Send_String(char str[])
         Send_Data(*(str++));
     }
 }
-
 
 
 void Send_Int(int n)
@@ -472,5 +440,3 @@ void InitLCD(void)
     CLR_DISPLAY;
     POS0_DISPLAY;
 }
-
-
